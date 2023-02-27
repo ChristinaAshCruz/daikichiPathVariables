@@ -1,7 +1,11 @@
 package com.christinacruz.daikichipathvariables;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
+@RequestMapping("/daikichi")
 public class DaikichiPathVarController {
 	@RequestMapping("")
 	public String index() {
@@ -14,5 +18,11 @@ public class DaikichiPathVarController {
 	@RequestMapping("/tomorrow")
 	public String tomorrow() {
 		return "Tomorrow, an opportunity will arise, so be sure to be open to new ideas!";
+	}
+	
+	// new routes:
+	@RequestMapping("/travel/{location}")
+	public String travelMessage(@PathVariable("location") String travel) {
+		return "Congratulations! You will soon travel to " + travel + "!";
 	}
 }
